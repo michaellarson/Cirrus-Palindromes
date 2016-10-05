@@ -9,6 +9,8 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.control.TextFormatter;
 import javafx.scene.layout.GridPane;
+import javafx.scene.text.Font;
+import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import javafx.util.converter.NumberStringConverter;
@@ -80,6 +82,10 @@ public class Palindrome extends Application {
 		grid.setVgap(10);
 		grid.setPadding(new Insets(25, 25, 25, 25));
 		
+		Text title = new Text("Palindrome Finder");
+		title.setFont(Font.font("Tahoma", FontWeight.NORMAL, 20));
+		title.setUnderline(true);
+		grid.add(title, 0, 0, 2, 1);
 		Label highLabel = new Label("High Number");
 		grid.add(highLabel, 0, 1);
         TextField highNum = new TextField();
@@ -107,7 +113,7 @@ public class Palindrome extends Application {
             }
         });
         
-        Scene scene = new Scene(grid, 500, 225);
+        Scene scene = new Scene(grid, 450, 240);
         primaryStage.setScene(scene);
         primaryStage.show();
     }
