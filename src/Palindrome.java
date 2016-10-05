@@ -33,7 +33,11 @@ public class Palindrome extends Application {
 	public static String findPalindrome(String highNum, String lowNum){
 		highNum = highNum.replace(",", "");
 		lowNum = lowNum.replace(",", "");
-		if(Integer.parseInt(highNum) <= 10 && Integer.parseInt(highNum) > 0 && Integer.parseInt(highNum) - 1 > Integer.parseInt(lowNum))
+		if(Integer.parseInt(highNum) < Integer.parseInt(lowNum))
+			return "ERROR. High Number can't be lower than Low Number.";
+		if(highNum.indexOf('-') >= 0 || Integer.parseInt(highNum) == 0)
+			return "ERROR. Negative numbers can never be palindromes.";
+		if(Integer.parseInt(highNum) <= 10 && Integer.parseInt(highNum) - 1 > Integer.parseInt(lowNum))
 			return Integer.toString(Integer.parseInt(highNum) - 1);
 		String frontHalf = getFrontHalf(highNum);
 		String palindrome = "";
@@ -94,6 +98,7 @@ public class Palindrome extends Application {
         Label outLabel = new Label("Palindrome:");
         grid.add(outLabel, 0, 4);
         Text output = new Text();
+        output.setWrappingWidth(200);
         grid.add(output, 1, 4);
         
         search.setOnAction(new EventHandler<ActionEvent>(){
@@ -102,7 +107,7 @@ public class Palindrome extends Application {
             }
         });
         
-        Scene scene = new Scene(grid, 300, 225);
+        Scene scene = new Scene(grid, 500, 225);
         primaryStage.setScene(scene);
         primaryStage.show();
     }
