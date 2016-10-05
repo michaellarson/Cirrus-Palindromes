@@ -33,6 +33,8 @@ public class Palindrome extends Application {
 	public static String findPalindrome(String highNum, String lowNum){
 		highNum = highNum.replace(",", "");
 		lowNum = lowNum.replace(",", "");
+		if(Integer.parseInt(highNum) <= 10 && Integer.parseInt(highNum) > 0 && Integer.parseInt(highNum) - 1 > Integer.parseInt(lowNum))
+			return Integer.toString(Integer.parseInt(highNum) - 1);
 		String frontHalf = getFrontHalf(highNum);
 		String palindrome = "";
 		if(isEven(highNum)){
