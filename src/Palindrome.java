@@ -109,7 +109,10 @@ public class Palindrome extends Application {
         
         search.setOnAction(new EventHandler<ActionEvent>(){
             public void handle(ActionEvent event) {
-                output.setText(findPalindrome(highNum.getText(),lowNum.getText()));
+            	if(highNum.getText().trim().isEmpty() || lowNum.getText().trim().isEmpty())
+            		output.setText("ERROR. Input value missing.");
+            	else
+            		output.setText(findPalindrome(highNum.getText(),lowNum.getText()));
             }
         });
         
